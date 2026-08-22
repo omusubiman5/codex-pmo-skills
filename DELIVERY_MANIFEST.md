@@ -10,9 +10,13 @@
 
 ## Build outputs
 
-- RIA++ skills: 9
-- Test prompts: 54
-- Independent blind-test final result: 54/54
+- Official-source RIA++ skills: 9
+- Official routing test prompts: 54
+- Independent blind-test final result for official-source skills: 54/54
+- Separate operational PMO skills: 1 (`codex-pmo-orchestration`)
+- PMO forward-test prompts: 7
+- Independent PMO forward-test result: 7/7
+- Total installable skill directories: 10
 - Cross-skill bait result: 18/18
 - INDEX: complete
 - GLOSSARY: complete
@@ -31,5 +35,5 @@
 ## Distribution
 
 - Status: GitHub publication prepared.
-- Only the 9 skills that passed stage 4 are included as installable skill directories.
+- Installable directories comprise 9 official-source skills that passed stage 4 and 1 separately audited operational PMO skill.
 - Installation remains an explicit user action; the repository does not overwrite existing user skills.

@@ -10,16 +10,21 @@ Codexをプロジェクトへ導入し、初期運用を安全に開始するた
 - MCPとsubagentの統制
 - CI接続と機械可読な成果物の設計
 - 初期運用の検証
+- 横断task分解、event follow-up、重複制御、release lane、evidence gate
 
-課題一覧、個別bug修正、障害復旧、日常保守は対象外です。
+別系列の `codex-pmo-orchestration` は横断PMO運用だけを扱い、個別製品の実装や、source adapter未接続時のbackground automationは行いません。
+
+課題一覧の実作業、個別bug修正、障害復旧、日常保守は対象外です。
 
 ## 内容
 
-- Skills: 9
-- Source: OpenAI Codex CLI公式資料15件
+- Official-source RIA++ skills: 9
+- Separate operational PMO skills: 1
+- Total installable skill directories: 10
+- Source: OpenAI Codex CLI公式資料15件（9 official-source skills）
 - RIA++: 原文、解釈、公式事例、trigger、実行手順、境界
-- Tests: 54 prompts
-- Independent blind routing test: 54/54
+- Tests: 54 official routing prompts + 7 PMO forward-test prompts = 61
+- Independent results: official 54/54; PMO 7/7; cross-skill bait 18/18
 - Cross-skill bait test: 18/18
 
 ## 初めて使う場合
@@ -29,7 +34,7 @@ Codexをプロジェクトへ導入し、初期運用を安全に開始するた
 
 ## Codexへユーザー単位でインストールする
 
-ZIPを展開し、9つの `codex-*` skill directoryをCodexのユーザーskill directoryへコピーします。
+ZIPを展開し、10の `codex-*` skill directoryをCodexのユーザーskill directoryへコピーします。
 
 Windows PowerShellの例:
 
@@ -45,7 +50,8 @@ $skillNames = @(
   "codex-bounded-subagents",
   "codex-context-entry-routing",
   "codex-auth-boundary-selection",
-  "codex-mcp-control-plane"
+  "codex-mcp-control-plane",
+  "codex-pmo-orchestration"
 )
 
 foreach ($name in $skillNames) {
@@ -73,4 +79,3 @@ Get-FileHash -Algorithm SHA256 ".\codex-execution-mode-routing\SKILL.md"
 ## 重要な注意
 
 このskill集はsecurityを自動保証しません。組織policy、法令、secret管理、接続先MCPの安全性は別途確認してください。
-

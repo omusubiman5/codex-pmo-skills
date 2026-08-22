@@ -1,6 +1,6 @@
-# Codex導入・初期運用PMO — 9つのskill
+# Codex導入・初期運用PMO — 10のskill
 
-このフォルダには、OpenAIのCodex CLI公式資料を読んで作った、9つのskillが入っています。
+このフォルダには、OpenAIのCodex CLI公式資料を読んで作った9つのskillと、日常の横断PMO運用を担う1つのskillが入っています。
 
 「Codex CLIをまだ使ったことがない」「skillやMCPという言葉も知らない」という人でも、
 このREADMEだけで全体像が分かるように説明します。
@@ -67,9 +67,9 @@ Codexは便利ですが、頼み方や権限設定が曖昧だと、次の問題
 - 複数のAIが同じfileを同時に編集して衝突する
 - Web検索を制限したつもりでも、別の通信経路が残る
 
-この9つのskillは、これらを一つの大きな「安全設定」で済ませず、問題ごとに分けて判断します。
+公式資料を元にした9つのskillは、これらを一つの大きな「安全設定」で済ませず、問題ごとに分けて判断します。加えてPMO運用skillが、実際の複数プロジェクトの進行を扱います。
 
-## 9つのskill
+## 10のskill
 
 ### 1. どこでCodexを動かすか決める
 
@@ -183,6 +183,14 @@ MCPは、Codexを外部の資料や道具へ接続する仕組みです。
 
 [詳しい説明](./codex-mcp-control-plane/SKILL.md)
 
+### 10. 複数プロジェクトを止めずに回す
+
+#### `codex-pmo-orchestration`
+
+PMOが、10分粒度のタスク分解、担当・監査の並列実行、停止イベントの追跡、リリース直行レーンを運用します。
+
+[詳しい説明](./codex-pmo-orchestration/SKILL.md)
+
 ## どのskillを使えばよいか迷ったら
 
 | 困っていること | 最初に見るskill |
@@ -196,6 +204,7 @@ MCPは、Codexを外部の資料や道具へ接続する仕組みです。
 | 画像・Web・MCPのどれで情報を渡すか | `codex-context-entry-routing` |
 | loginやAPI keyを扱いたい | `codex-auth-boundary-selection` |
 | MCP serverやtoolを制限したい | `codex-mcp-control-plane` |
+| 複数プロジェクトの停滞、重複、並行実行、リリースを管理したい | `codex-pmo-orchestration` |
 
 ## 「依存」と「統合」は違います
 
@@ -235,7 +244,7 @@ MCPは、Codexを外部の資料や道具へ接続する仕組みです。
 | `test-prompts.json` | 正しく反応するか確かめる質問集 |
 | `test-results.md` | 独立したAIによる試験結果 |
 
-`SKILL.md` はRIA++という形で構成されています。
+公式資料由来9件の `SKILL.md` はRIA++という形で構成されています。別系列の `codex-pmo-orchestration` は、日常運用向けのPMO契約として構成されています。
 
 | 記号 | 意味 |
 |---|---|
@@ -250,7 +259,7 @@ MCPは、Codexを外部の資料や道具へ接続する仕組みです。
 
 ## 試験結果
 
-9 skillに対して、合計54個の質問で試験しました。
+公式資料由来9件は54 routing promptsで独立blind test 54/54、別系列PMO 1件は7 forward-test promptsで独立forward test 7/7です。合計は10 skill・61 promptsですが、試験方式は別々に記録しています。
 
 - 呼び出すべき質問
 - 呼び出してはいけない誘餌の質問
@@ -287,7 +296,7 @@ cd codex-pmo-skills
 %USERPROFILE%\.codex\skills
 ```
 
-repository直下にある、試験を通過した9つの `codex-*` skill directoryを丸ごとコピーします。
+repository直下にある、試験を通過した10の `codex-*` skill directoryを丸ごとコピーします。
 候補資料、棄却記録、監査fileをskill directoryへ混ぜる必要はありません。
 
 PowerShellの例:
@@ -303,7 +312,8 @@ $skillNames = @(
   "codex-bounded-subagents",
   "codex-context-entry-routing",
   "codex-auth-boundary-selection",
-  "codex-mcp-control-plane"
+  "codex-mcp-control-plane",
+  "codex-pmo-orchestration"
 )
 
 foreach ($name in $skillNames) {

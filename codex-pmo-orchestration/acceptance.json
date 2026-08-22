@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.granularity_contract",
+      "equals": "dispatch_only_tasks_within_10_minutes"
+    },
+    {
+      "path": "result.event_mode",
+      "equals": "review_cycle_only_without_source_adapter"
+    },
+    {
+      "path": "result.event_replay",
+      "equals": "idempotent_no_duplicate_dispatch_inbox_or_close"
+    },
+    {
+      "path": "result.release_lane",
+      "equals": "fixed_candidate_audit_with_real_blockers_only"
+    },
+    {
+      "path": "result.evidence_gate",
+      "equals": "requirements_location_and_judge_fixed_before_dispatch"
+    },
+    {
+      "path": "result.role_boundary",
+      "equals": "pmo_coordinates_executor_implements"
+    },
+    {
+      "path": "result.pmo_outcome",
+      "equals": "next_action_user_gate_or_evidence_close"
+    }
+  ]
+}

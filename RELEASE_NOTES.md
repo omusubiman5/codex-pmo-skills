@@ -1,5 +1,12 @@
 # Release notes
 
+## Unreleased — 2026-08-22
+
+- Added `codex-pmo-orchestration` as 1 separately authored and independently audited operational PMO skill.
+- Added 7 PMO forward-test prompts; independent result: 7/7.
+- Total installable skill directories: 10 (9 official-source RIA++ skills + 1 separate operational PMO skill).
+- Scope expansion is limited to cross-project PM coordination; it does not perform product implementation or claim background automation without a source adapter.
+
 ## 0.1.0 — 2026-08-17
 
 Initial public release of Codex PMO Skills.
@@ -14,4 +21,3 @@ Initial public release of Codex PMO Skills.
 
 Scope ends before backlog management, individual bug fixing, incident recovery,
 release operations, and routine maintenance.
-
