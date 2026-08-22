@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.mcp_control",
+      "equals": "required_read_only_allowlist_write_denied"
+    }
+  ]
+}

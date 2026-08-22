@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.ci_handoff",
+      "equals": "read_only_generation_binary_patch_separate_write_job"
+    }
+  ]
+}

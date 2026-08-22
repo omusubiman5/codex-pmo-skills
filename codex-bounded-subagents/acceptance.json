@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.subagent_boundary",
+      "equals": "parallel_read_heavy_single_writer"
+    }
+  ]
+}

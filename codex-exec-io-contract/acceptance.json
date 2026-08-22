@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.exec_io",
+      "equals": "stdin_task_jsonl_events_schema_final_nonzero_fail"
+    }
+  ]
+}

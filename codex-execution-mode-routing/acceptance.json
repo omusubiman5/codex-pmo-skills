@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.execution_mode",
+      "equals": "non_interactive_codex_exec"
+    }
+  ]
+}

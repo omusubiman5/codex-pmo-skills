@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.auth_boundary",
+      "equals": "non_interactive_process_scoped_api_key"
+    }
+  ]
+}

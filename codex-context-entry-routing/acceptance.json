@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.context_entry",
+      "equals": "minimal_entry_with_task_contract"
+    }
+  ]
+}

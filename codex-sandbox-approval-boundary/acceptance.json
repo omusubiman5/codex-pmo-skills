@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.sandbox_boundary",
+      "equals": "read_only_no_midrun_approval"
+    }
+  ]
+}

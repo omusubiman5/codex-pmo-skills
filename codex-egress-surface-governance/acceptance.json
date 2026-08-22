@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.egress_control",
+      "equals": "per_surface_controls_no_bypass"
+    }
+  ]
+}
