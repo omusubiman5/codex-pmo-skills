@@ -1,13 +1,15 @@
-# Codex導入・初期運用PMO — 10のskill
+# Codex Delivery Assurance — 9つのskill
 
-このフォルダには、OpenAIのCodex CLI公式資料を読んで作った9つのskillと、日常の横断PMO運用を担う1つのskillが入っています。
+Codexを動かす前に、実行方式、権限、外部通信、認証、MCP、CI、入出力、コンテキスト、複数agentの境界を決める9つのskillです。
 
 「Codex CLIをまだ使ったことがない」「skillやMCPという言葉も知らない」という人でも、
 このREADMEだけで全体像が分かるように説明します。
 
 一言でいえば、これはCodexにコードを書かせるskill集ではありません。
 
-> Codexをプロジェクトへ参加させ、事故を起こさず仕事を始められる状態まで整えるPMO skill集です。
+> 対象プロジェクトを別製品へ作り替えるskillではありません。依頼に必要な境界だけを選び、実行・引き渡しが安全かを判定します。
+
+Skill Magnetの `codex-delivery-assurance` パックに含まれるのは、この9つだけです。repositoryには横断進捗管理用の `codex-pmo-orchestration` もありますが、別Skillであり、Delivery Assuranceパックには含まれません。
 
 ## 担当する範囲
 
@@ -67,9 +69,9 @@ Codexは便利ですが、頼み方や権限設定が曖昧だと、次の問題
 - 複数のAIが同じfileを同時に編集して衝突する
 - Web検索を制限したつもりでも、別の通信経路が残る
 
-公式資料を元にした9つのskillは、これらを一つの大きな「安全設定」で済ませず、問題ごとに分けて判断します。加えてPMO運用skillが、実際の複数プロジェクトの進行を扱います。
+9つのDelivery Assurance skillは、これらを一つの大きな「安全設定」で済ませず、問題ごとに分けて判断します。INDEXを先に読み、各skillのtriggerとboundaryから必要最小限の集合だけを適用します。
 
-## 10のskill
+## 9つのDelivery Assurance skill
 
 ### 1. どこでCodexを動かすか決める
 
@@ -183,11 +185,11 @@ MCPは、Codexを外部の資料や道具へ接続する仕組みです。
 
 [詳しい説明](./codex-mcp-control-plane/SKILL.md)
 
-### 10. 複数プロジェクトを止めずに回す
+## 別Skill: 複数プロジェクトを止めずに回す
 
 #### `codex-pmo-orchestration`
 
-PMOが、10分粒度のタスク分解、担当・監査の並列実行、停止イベントの追跡、リリース直行レーンを運用します。
+複数プロジェクトの横断進捗管理が必要な場合だけ使う任意Skillです。Delivery Assuranceの判定には自動で含めません。
 
 [詳しい説明](./codex-pmo-orchestration/SKILL.md)
 
@@ -204,7 +206,8 @@ PMOが、10分粒度のタスク分解、担当・監査の並列実行、停止
 | 画像・Web・MCPのどれで情報を渡すか | `codex-context-entry-routing` |
 | loginやAPI keyを扱いたい | `codex-auth-boundary-selection` |
 | MCP serverやtoolを制限したい | `codex-mcp-control-plane` |
-| 複数プロジェクトの停滞、重複、並行実行、リリースを管理したい | `codex-pmo-orchestration` |
+
+横断進捗管理が必要な場合は、Delivery Assuranceとは別に `codex-pmo-orchestration` を選びます。
 
 ## 「依存」と「統合」は違います
 
@@ -244,7 +247,7 @@ PMOが、10分粒度のタスク分解、担当・監査の並列実行、停止
 | `test-prompts.json` | 正しく反応するか確かめる質問集 |
 | `test-results.md` | 独立したAIによる試験結果 |
 
-公式資料由来9件の `SKILL.md` はRIA++という形で構成されています。別系列の `codex-pmo-orchestration` は、日常運用向けのPMO契約として構成されています。
+Delivery Assuranceの9件の `SKILL.md` はRIA++という形で構成されています。別Skillの `codex-pmo-orchestration` はこの構成・選択対象に含めません。
 
 | 記号 | 意味 |
 |---|---|
@@ -259,7 +262,7 @@ PMOが、10分粒度のタスク分解、担当・監査の並列実行、停止
 
 ## 試験結果
 
-公式資料由来9件は54 routing promptsで独立blind test 54/54、別系列PMO 1件は7 forward-test promptsで独立forward test 7/7です。合計は10 skill・61 promptsですが、試験方式は別々に記録しています。
+Delivery Assuranceの9件は54 routing promptsで独立blind test 54/54です。別Skillの `codex-pmo-orchestration` は別枠の7 forward-test promptsで7/7です。両者を一つのパックとして試験・実行した結果ではありません。
 
 - 呼び出すべき質問
 - 呼び出してはいけない誘餌の質問
@@ -296,7 +299,7 @@ cd codex-pmo-skills
 %USERPROFILE%\.codex\skills
 ```
 
-repository直下にある、試験を通過した10の `codex-*` skill directoryを丸ごとコピーします。
+Delivery Assuranceとしてインストールするのは、次の9つのskill directoryです。
 候補資料、棄却記録、監査fileをskill directoryへ混ぜる必要はありません。
 
 PowerShellの例:
@@ -312,8 +315,7 @@ $skillNames = @(
   "codex-bounded-subagents",
   "codex-context-entry-routing",
   "codex-auth-boundary-selection",
-  "codex-mcp-control-plane",
-  "codex-pmo-orchestration"
+  "codex-mcp-control-plane"
 )
 
 foreach ($name in $skillNames) {
@@ -322,6 +324,12 @@ foreach ($name in $skillNames) {
 ```
 
 既に同名directoryがある場合は上書きせず、既存版との差分を確認してください。
+
+横断進捗管理も必要な場合だけ、別Skillを追加します。
+
+```powershell
+Copy-Item -LiteralPath (Join-Path $PWD "codex-pmo-orchestration") -Destination $target -Recurse
+```
 
 ## 大切な注意
 

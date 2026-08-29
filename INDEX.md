@@ -1,4 +1,4 @@
-# Codex CLI Official Documentation — Skill Index
+# Codex Delivery Assurance — Skill Index
 
 > cangjie-skillで OpenAI 公式資料15件を蒸留し、**9 skills**を構築した。
 > 処理日: 2026-08-17

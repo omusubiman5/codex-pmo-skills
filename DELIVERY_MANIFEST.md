@@ -10,13 +10,14 @@
 
 ## Build outputs
 
-- Official-source RIA++ skills: 9
+- Product: Codex Delivery Assurance
+- Delivery Assurance skills: 9
 - Official routing test prompts: 54
 - Independent blind-test final result for official-source skills: 54/54
-- Separate operational PMO skills: 1 (`codex-pmo-orchestration`)
+- Optional separate operational skill: 1 (`codex-pmo-orchestration`, not part of the Delivery Assurance package)
 - PMO forward-test prompts: 7
 - Independent PMO forward-test result: 7/7
-- Total installable skill directories: 10
+- Default package/install count: 9
 - Cross-skill bait result: 18/18
 - INDEX: complete
 - GLOSSARY: complete
@@ -34,6 +35,12 @@
 
 ## Distribution
 
-- Status: GitHub publication prepared.
-- Installable directories comprise 9 official-source skills that passed stage 4 and 1 separately audited operational PMO skill.
+- Version: `0.2.0`
+- Release date: `2026-08-29`
+- Package: `dist/codex-delivery-assurance-0.2.0.zip`
+- Package checksum: `dist/codex-delivery-assurance-0.2.0.zip.sha256`
+- Payload checksum manifest: `CHECKSUMS.sha256` (also included in the ZIP)
+- Status: release candidate; GO is decided only after local/remote commit, tag, package, checksum, validation, and Skill Magnet snapshot all match.
+- The Delivery Assurance package comprises the 9 official-source skills that passed stage 4.
+- `codex-pmo-orchestration` is distributed separately and is not selected by the Delivery Assurance package.
 - Installation remains an explicit user action; the repository does not overwrite existing user skills.

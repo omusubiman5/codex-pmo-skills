@@ -1,6 +1,6 @@
-# Codex PMO Skills 0.1.0
+# Codex Delivery Assurance Skills 0.2.0
 
-Codexをプロジェクトへ導入し、初期運用を安全に開始するためのPMO skill集です。
+Codexの実行境界、権限、外部接続、成果物、引き渡し条件を検証するDelivery Assurance skill集です。
 
 ## 対象範囲
 
@@ -10,17 +10,16 @@ Codexをプロジェクトへ導入し、初期運用を安全に開始するた
 - MCPとsubagentの統制
 - CI接続と機械可読な成果物の設計
 - 初期運用の検証
-- 横断task分解、event follow-up、重複制御、release lane、evidence gate
 
-別系列の `codex-pmo-orchestration` は横断PMO運用だけを扱い、個別製品の実装や、source adapter未接続時のbackground automationは行いません。
+Skill Magnetの `codex-delivery-assurance` パックは9スキルです。別系列の `codex-pmo-orchestration` は横断PMO運用だけを扱い、パックには含まれません。
 
 課題一覧の実作業、個別bug修正、障害復旧、日常保守は対象外です。
 
 ## 内容
 
-- Official-source RIA++ skills: 9
-- Separate operational PMO skills: 1
-- Total installable skill directories: 10
+- Delivery Assurance skills: 9
+- Optional separate operational skill: 1 (`codex-pmo-orchestration`)
+- Default package/install count: 9
 - Source: OpenAI Codex CLI公式資料15件（9 official-source skills）
 - RIA++: 原文、解釈、公式事例、trigger、実行手順、境界
 - Tests: 54 official routing prompts + 7 PMO forward-test prompts = 61
@@ -34,7 +33,7 @@ Codexをプロジェクトへ導入し、初期運用を安全に開始するた
 
 ## Codexへユーザー単位でインストールする
 
-ZIPを展開し、10の `codex-*` skill directoryをCodexのユーザーskill directoryへコピーします。
+ZIPを展開し、Delivery Assuranceの9つのskill directoryをCodexのユーザーskill directoryへコピーします。
 
 Windows PowerShellの例:
 
@@ -50,8 +49,7 @@ $skillNames = @(
   "codex-bounded-subagents",
   "codex-context-entry-routing",
   "codex-auth-boundary-selection",
-  "codex-mcp-control-plane",
-  "codex-pmo-orchestration"
+  "codex-mcp-control-plane"
 )
 
 foreach ($name in $skillNames) {
@@ -61,13 +59,22 @@ foreach ($name in $skillNames) {
 
 既に同名directoryがある場合、この例は上書きせずerrorになります。既存版を確認してから更新してください。
 
+`codex-pmo-orchestration` は必要な場合だけ別途インストールします。
+
 ## 完全性を確認する
 
-同梱の `CHECKSUMS.sha256` と展開後fileのSHA-256を比較できます。
+ZIP内の `CHECKSUMS.sha256` と展開後fileのSHA-256を比較できます。ZIP自体のhashは、配布物と同じdirectoryにある `codex-delivery-assurance-0.2.0.zip.sha256` で確認します。
 
 ```powershell
 Get-FileHash -Algorithm SHA256 ".\codex-execution-mode-routing\SKILL.md"
 ```
+
+公式配布物:
+
+- `dist/codex-delivery-assurance-0.2.0.zip`
+- `dist/codex-delivery-assurance-0.2.0.zip.sha256`
+
+ZIPにはDelivery Assurance本体の9 skillと利用文書だけを収録します。別Skillの `codex-pmo-orchestration`、候補資料、監査作業fileは含めません。
 
 ## Licenseと出典
 

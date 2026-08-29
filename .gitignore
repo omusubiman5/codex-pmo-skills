@@ -2,11 +2,4 @@
 Thumbs.db
 *.tmp
 *.log
-
-
-# Beads / Dolt files (added by bd init)
-.dolt/
-*.db
-.beads-credential-key
-.beads/proxieddb/
-*.gate.lock*
+dist/*.tmp
