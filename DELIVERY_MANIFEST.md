@@ -40,7 +40,9 @@
 - Package: `dist/codex-delivery-assurance-0.2.0.zip`
 - Package checksum: `dist/codex-delivery-assurance-0.2.0.zip.sha256`
 - Payload checksum manifest: `CHECKSUMS.sha256` (also included in the ZIP)
-- Status: release candidate; GO is decided only after local/remote commit, tag, package, checksum, validation, and Skill Magnet snapshot all match.
+- Release commit: `8f12af5ddfdd3b985f26d33dad09d6061d675342`
+- Release tag: `v0.2.0`
+- Status: released. Package, checksum, validation, tag, Skill Magnet snapshot, installed menu, and cross-platform CI evidence are recorded in [`捏造脱出実績.md`](./捏造脱出実績.md).
 - The Delivery Assurance package comprises the 9 official-source skills that passed stage 4.
 - `codex-pmo-orchestration` is distributed separately and is not selected by the Delivery Assurance package.
 - Installation remains an explicit user action; the repository does not overwrite existing user skills.
