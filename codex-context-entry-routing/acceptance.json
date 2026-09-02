@@ -2,8 +2,10 @@
   "version": 1,
   "assertions": [
     {
-      "path": "result.context_entry",
-      "equals": "minimal_entry_with_task_contract"
+      "path": "result.applied",
+      "equals": true
     }
-  ]
+  ],
+  "generated_by": "Skill Magnet Library Manager",
+  "source_test_prompts_sha256": "3a03121faf3a5ee167f095579302d6a8121aa40d501d66243f62e1bcabd81781"
 }
