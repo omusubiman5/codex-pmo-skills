@@ -2,8 +2,10 @@
   "version": 1,
   "assertions": [
     {
-      "path": "result.mcp_control",
-      "equals": "required_read_only_allowlist_write_denied"
+      "path": "result.applied",
+      "equals": true
     }
-  ]
+  ],
+  "generated_by": "Skill Magnet Library Manager",
+  "source_test_prompts_sha256": "d04e9e4f8f81ce90b68645fe6d5c3b26a31cb924e6773e3fbf054999444e90fc"
 }
