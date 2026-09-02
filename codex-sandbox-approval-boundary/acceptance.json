@@ -2,8 +2,10 @@
   "version": 1,
   "assertions": [
     {
-      "path": "result.sandbox_boundary",
-      "equals": "read_only_no_midrun_approval"
+      "path": "result.applied",
+      "equals": true
     }
-  ]
+  ],
+  "generated_by": "Skill Magnet Library Manager",
+  "source_test_prompts_sha256": "fb96f82ec641ddc83172c07becd80fe67c18ebaf6f7930aa4a499956294bc8bf"
 }

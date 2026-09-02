@@ -2,8 +2,10 @@
   "version": 1,
   "assertions": [
     {
-      "path": "result.ci_handoff",
-      "equals": "read_only_generation_binary_patch_separate_write_job"
+      "path": "result.applied",
+      "equals": true
     }
-  ]
+  ],
+  "generated_by": "Skill Magnet Library Manager",
+  "source_test_prompts_sha256": "e667430b0cd03f0c967d437b7f4b296410bff89723ac13256e34977a4c7a1a80"
 }

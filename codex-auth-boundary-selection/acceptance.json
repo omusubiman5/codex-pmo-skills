@@ -2,8 +2,10 @@
   "version": 1,
   "assertions": [
     {
-      "path": "result.auth_boundary",
-      "equals": "non_interactive_process_scoped_api_key"
+      "path": "result.applied",
+      "equals": true
     }
-  ]
+  ],
+  "generated_by": "Skill Magnet Library Manager",
+  "source_test_prompts_sha256": "0c82720f829abf46c4460923aa753776d41c87c9354a58d713ceb1544b3ec26e"
 }
