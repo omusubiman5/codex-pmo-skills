@@ -2,8 +2,10 @@
   "version": 1,
   "assertions": [
     {
-      "path": "result.egress_control",
-      "equals": "per_surface_controls_no_bypass"
+      "path": "result.applied",
+      "equals": true
     }
-  ]
+  ],
+  "generated_by": "Skill Magnet Library Manager",
+  "source_test_prompts_sha256": "d09d8e6daeabd1e638dca0f66256789a290cf2bfc034ab816d9e39768001b0eb"
 }

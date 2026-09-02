@@ -2,8 +2,10 @@
   "version": 1,
   "assertions": [
     {
-      "path": "result.subagent_boundary",
-      "equals": "parallel_read_heavy_single_writer"
+      "path": "result.applied",
+      "equals": true
     }
-  ]
+  ],
+  "generated_by": "Skill Magnet Library Manager",
+  "source_test_prompts_sha256": "aea787f98ccdf582ae42cd60c7440673c792c922398dc6c7b2e9c1b9199c299b"
 }

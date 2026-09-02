@@ -2,8 +2,10 @@
   "version": 1,
   "assertions": [
     {
-      "path": "result.exec_io",
-      "equals": "stdin_task_jsonl_events_schema_final_nonzero_fail"
+      "path": "result.applied",
+      "equals": true
     }
-  ]
+  ],
+  "generated_by": "Skill Magnet Library Manager",
+  "source_test_prompts_sha256": "e90ac45b1db6cccbe5c6c9931c44551ce87237e1d6b7ca11d55eb3ac9fb7fdf7"
 }
