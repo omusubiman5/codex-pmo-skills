@@ -1,0 +1,17 @@
+{
+  "skill": "codex-auth-boundary-selection",
+  "version": "0.1.0",
+  "source_book": "Codex CLI official documentation — OpenAI",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"browserのないremote serverでCodex CLIへloginしたい。device codeを使うべき？","expected_behavior":"headless利用面を分類し、device codeまたは別machine callbackを比較する。","notes":"headless auth。"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"CIのcodex execへAPI keyを一回のprocessだけ渡し、logやartifactには残したくない。","expected_behavior":"process-scoped credential、保存・露出経路、revoke方法を設計する。","notes":"automation auth。"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"auth.jsonを別hostへコピーして使い回してよいかsecurity reviewして。","expected_behavior":"password同等の秘密として扱い、必要性・移送・保存・代替loginを評価する。","notes":"credential cache。"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"Codex jobはread-onlyにしてpatchを別jobでpushしたい。","expected_behavior":"本skillではなくcodex-ci-patch-handoffを中心に使う。","notes":"跨skill混同: job authority分離。"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"workspace外へのwriteを毎回approvalにしたい。","expected_behavior":"codex-sandbox-approval-boundaryを使う。","notes":"実行能力。"},
+    {"id":"edge-01","type":"edge_case","prompt":"共有workstationなので、一人のauth.jsonを全員で読めるfolderへ置けば便利だよね？","expected_behavior":"本skillを使って共有secret化を拒否し、各利用者認証または管理されたsecret境界を提案する。","notes":"利便性と秘密境界の衝突。"}
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 positive + 2 bait + 1 edge。should_not_triggerは全件必須。"
+}
+

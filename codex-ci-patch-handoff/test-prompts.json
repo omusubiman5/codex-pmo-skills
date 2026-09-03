@@ -1,0 +1,17 @@
+{
+  "skill": "codex-ci-patch-handoff",
+  "version": "0.1.0",
+  "source_book": "Codex CLI official documentation — OpenAI",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"CI failureをCodexに直させたいが、Codex jobにはcontents: readしか与えたくない。PRまでどう繋ぐ？","expected_behavior":"read-only生成job、binary patch artifact、別のwrite jobへ分離する。","notes":"公式worked caseに近い正面。"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"repositoryのtest scriptからAPI keyを隠しつつ、自動修正patchを作りたい。","expected_behavior":"推論credential保有jobとrepository write/適用jobを分離する。","notes":"secret exposure境界。"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"署名鍵をAI processへ渡さず、生成差分だけ別jobで署名・pushしたい。","expected_behavior":"patchを唯一のhandoffにして元commit・hash・testを検証後に署名する。","notes":"派生CI scenario。"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"localでCodexに小さなtypoを直させ、私が手動commitする。","expected_behavior":"job間authority分離が不要なので本skillを使わない。","notes":"CIではない。"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"codex execからproject_nameをJSONで返して次stepが読むようにしたい。","expected_behavior":"本skillではなくcodex-exec-io-contractを使う。","notes":"跨skill混同: 一般structured output。"},
+    {"id":"edge-01","type":"edge_case","prompt":"read-only jobがpatchを作り、別jobが無検査でmainへ直接pushする設計でよい？","expected_behavior":"本skillを使うが、元commit照合・patch適用・test・diff reviewなしの直接pushを拒否する。","notes":"構造は似るが安全検証が欠落。"}
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 positive + 2 bait + 1 edge。should_not_triggerは全件必須。"
+}
+

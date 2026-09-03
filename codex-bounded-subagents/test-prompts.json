@@ -1,0 +1,17 @@
+{
+  "skill": "codex-bounded-subagents",
+  "version": "0.1.0",
+  "source_book": "Codex CLI official documentation — OpenAI",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"大きなPRをhistory、security risk、API docsの三役で並列reviewし、親で統合したい。","expected_behavior":"bounded read-heavy role、最小tool、return format、親の統合手順を設計する。","notes":"公式PR review例。"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"frontend障害をbrowser再現、code path調査、最小修正へ分けてsubagentに任せたい。","expected_behavior":"証拠収集を先行しwriterを最後へ限定する段階分解を作る。","notes":"公式debug例。"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"20 packageを並列に読ませたいが、共有manifestは一つのagentだけに編集させたい。","expected_behavior":"read-heavy調査を並列化し、親統合後にsingle writerへ渡す。","notes":"write collision回避。"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"長時間task全体をcloudへ投げ、明日diffを受け取りたい。","expected_behavior":"本skillではなくcodex-execution-mode-routingを使う。","notes":"跨skill混同: cloud委譲。"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"3行の設定fileでtypoの場所を一つ探して。","expected_behavior":"小作業なのでsubagent分解しない。","notes":"過剰分解。"},
+    {"id":"edge-01","type":"edge_case","prompt":"三つのsubagentに同じlockfileを同時更新させれば速い？","expected_behavior":"write-heavy共有stateなので並列化を拒否し、調査並列＋single writerまたはworktree分離へ変える。","notes":"並列化の負例。"}
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 positive + 2 bait + 1 edge。should_not_triggerは全件必須。"
+}
+
