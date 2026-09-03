@@ -1,0 +1,4 @@
+interface:
+  display_name: "CMA004 — AI NEWS Markdown Output"
+  short_description: "CMA001のA〜Jを維持し、指定先直下へ1ニュース1Markdownで保存する"
+  default_prompt: "Use $cma-004 to run the CMA001 digest flow and replace only the Google Sheets output with one Markdown file per news item in the explicitly selected directory."
