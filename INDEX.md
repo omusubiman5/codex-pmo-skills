@@ -169,3 +169,9 @@ graph LR
 - 段階1〜4の正本: `corpus.json` の `pipeline`
 - JSON統合前の中間成果: `audit/`
 - 全候補の行先: `pipeline.candidate_disposition`
+
+## Custom skills
+
+```mermaid
+flowchart TD
+```

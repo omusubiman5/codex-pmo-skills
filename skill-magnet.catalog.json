@@ -246,6 +246,27 @@
       },
       "source_index": "# conflict-clarity — Skill Index\n\n> cangjie-skillにより150曲を単一書籍として蒸留。検証済みskillは **11件**。\n> 処理日: 2026-08-18\n\n## この資料について\n\n- **主な作詞者**: 柳沢亮太（ほか渋谷龍太、上杉研太）\n- **一句の主旨**: 不確実さや痛みを消さず、人と向き合い、今の選択と継続で希望を具体化する。\n- **全体理解**: [BOOK_OVERVIEW.md](./BOOK_OVERVIEW.md)\n- **統合正本**: [corpus.json](./corpus.json)\n- **用語集**: [GLOSSARY.md](./GLOSSARY.md)\n- **精華長文**: [DIGEST.md](./DIGEST.md)（段階5）\n\n---\n\n## Skill一覧\n\n### 感情・関係\n\n- [`emotion-to-protected-value`](./emotion-to-protected-value/SKILL.md) — 矛盾感情から守りたい価値を逆算する\n- [`imperfect-understanding-dialogue`](./imperfect-understanding-dialogue/SKILL.md) — 完全理解を待たずに関係を作る\n- [`protected-object-boundary-test`](./protected-object-boundary-test/SKILL.md) — 自己犠牲か回避かを保護対象で判定する\n\n### 判断・倫理\n\n- [`gradient-beyond-binary`](./gradient-beyond-binary/SKILL.md) — 二択を連続量へ戻すグラデーション思考\n- [`purpose-impact-justice-audit`](./purpose-impact-justice-audit/SKILL.md) — 正しさを目的と影響で監査する\n- [`non-ranking-multiple-values`](./non-ranking-multiple-values/SKILL.md) — 複数の大切を安易に順位付けしない\n\n### 時間・変化\n\n- [`adaptive-continuity`](./adaptive-continuity/SKILL.md) — 変えない価値のために手段を更新する\n- [`regret-to-present-commitment`](./regret-to-present-commitment/SKILL.md) — 過去の反実仮想を現在の約束へ変える\n- [`future-authored-meaning`](./future-authored-meaning/SKILL.md) — 痛みへ後から意味を付与する\n- [`restart-as-continuation`](./restart-as-continuation/SKILL.md) — 再始動をゼロではなく経験の続きと捉える\n- [`possibility-under-uncertainty`](./possibility-under-uncertainty/SKILL.md) — 確信ではなく可能性を行動根拠にする\n\n---\n\n## 引用図\n\n```mermaid\ngraph LR\n    emotion_to_protected_value[\"emotion-to-protected-value\"] ==>|\"composes-with\"| gradient_beyond_binary[\"gradient-beyond-binary\"]\n    protected_object_boundary_test[\"protected-object-boundary-test\"] -->|\"depends-on\"| emotion_to_protected_value[\"emotion-to-protected-value\"]\n    purpose_impact_justice_audit[\"purpose-impact-justice-audit\"] -->|\"depends-on\"| gradient_beyond_binary[\"gradient-beyond-binary\"]\n    purpose_impact_justice_audit[\"purpose-impact-justice-audit\"] ==>|\"composes-with\"| protected_object_boundary_test[\"protected-object-boundary-test\"]\n    imperfect_understanding_dialogue[\"imperfect-understanding-dialogue\"] ==>|\"composes-with\"| gradient_beyond_binary[\"gradient-beyond-binary\"]\n    imperfect_understanding_dialogue[\"imperfect-understanding-dialogue\"] ==>|\"composes-with\"| emotion_to_protected_value[\"emotion-to-protected-value\"]\n    non_ranking_multiple_values[\"non-ranking-multiple-values\"] -->|\"depends-on\"| gradient_beyond_binary[\"gradient-beyond-binary\"]\n    non_ranking_multiple_values[\"non-ranking-multiple-values\"] ==>|\"composes-with\"| adaptive_continuity[\"adaptive-continuity\"]\n    adaptive_continuity[\"adaptive-continuity\"] -.->|\"contrasts-with\"| restart_as_continuation[\"restart-as-continuation\"]\n    regret_to_present_commitment[\"regret-to-present-commitment\"] ==>|\"composes-with\"| future_authored_meaning[\"future-authored-meaning\"]\n    restart_as_continuation[\"restart-as-continuation\"] ==>|\"composes-with\"| future_authored_meaning[\"future-authored-meaning\"]\n    possibility_under_uncertainty[\"possibility-under-uncertainty\"] ==>|\"composes-with\"| restart_as_continuation[\"restart-as-continuation\"]\n    regret_to_present_commitment[\"regret-to-present-commitment\"] -.->|\"contrasts-with\"| possibility_under_uncertainty[\"possibility-under-uncertainty\"]\n```\n\n- `-->` depends-on\n- `-.->` contrasts-with\n- `==>` composes-with\n\n---\n\n## 推奨学習順\n\n1. `gradient-beyond-binary` — 二択を解除する基礎\n2. `emotion-to-protected-value` — 感情から価値を読む\n3. `imperfect-understanding-dialogue` — 不完全な理解で接続する\n4. `protected-object-boundary-test` — 自己犠牲と境界を判定する\n5. `purpose-impact-justice-audit` — 正しさの運用を監査する\n6. `non-ranking-multiple-values` — 複数価値を保持する\n7. `future-authored-meaning` — 過去の意味を更新する\n8. `regret-to-present-commitment` — 後悔を現在の約束へ変える\n9. `adaptive-continuity` — 核を守り手段を変える\n10. `restart-as-continuation` — 経験を持って再開する\n11. `possibility-under-uncertainty` — 不確実性の中で試行する\n\n---\n\n## 監査\n\n- 段階1〜4の正本: `corpus.json` の `pipeline`\n- JSON統合前の中間成果: `audit/`\n- 全候補の行先: `pipeline.candidate_disposition`\n",
       "entry_skill": "conflict-clarity"
+    },
+    {
+      "id": "custom-skills",
+      "display_name": "Custom skills",
+      "purpose": "前日分のAIニュースdigestから本文読み上げ、キャラクターコメント、BGMを合成し、動画を作らず単一のポッドキャストMP3を生成する。CMA004、AI NEWS podcast、音声版ニュース生成を依頼された時に使う。",
+      "skills": [
+        "cma-004"
+      ],
+      "skill_metadata": {
+        "cma-004": {
+          "display_name": "CMA004 — AI NEWS Podcast Audio",
+          "purpose": "前日分のAIニュースdigestから本文読み上げ、キャラクターコメント、BGMを合成し、動画を作らず単一のポッドキャストMP3を生成する。CMA004、AI NEWS podcast、音声版ニュース生成を依頼された時に使う。"
+        }
+      },
+      "relations": {
+        "depends-on": [],
+        "composes-with": [],
+        "contrasts-with": []
+      },
+      "source_index": "",
+      "entry_skill": ""
     }
   ]
 }
