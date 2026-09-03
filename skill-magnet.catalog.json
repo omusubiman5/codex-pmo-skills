@@ -250,7 +250,7 @@
     {
       "id": "custom-skills",
       "display_name": "Custom skills",
-      "purpose": "前日分のAIニュースdigestから本文読み上げ、キャラクターコメント、BGMを合成し、動画を作らず単一のポッドキャストMP3を生成する。CMA004、AI NEWS podcast、音声版ニュース生成を依頼された時に使う。",
+      "purpose": "CMA001のGmail・Web取得、ソース別抽出、重複排除、日本語執筆、品質検査を維持し、Google Sheetsへの出力だけを1ニュース1Markdownへ変更する。『CMA004』『CMA001をMarkdown出力』『AI NEWSをMarkdownへ保存』を依頼された時に使用する。動画・音声生成やSNS配信には使用しない。",
       "skills": [
         "cma-004"
       ],
