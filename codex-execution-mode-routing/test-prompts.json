@@ -1,0 +1,17 @@
+{
+  "skill": "codex-execution-mode-routing",
+  "version": "0.1.0",
+  "source_book": "Codex CLI official documentation — OpenAI",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"この調査は手元の対話型CLI、codex exec、cloudのどれで回すべき？","expected_behavior":"codex-execution-mode-routingを使い、人の介入、反復性、実行場所、受領時点で実行面を選ぶ。","notes":"実行面の明示比較。"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"毎晩同じrepository検査をCIで無人実行したい。Codexの実行方法を決めて。","expected_behavior":"repeatable non-interactive workflowとしてexecを候補にし、下位の入出力・権限設計へ渡す。","notes":"CI選択。"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"長いmigration調査を隔離環境へ投げ、明日の朝に結果をreviewしたい。","expected_behavior":"非同期委譲条件を確認してCodex cloudを選ぶ。","notes":"background cloud選択。"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"codex execの最終出力をJSON Schemaで固定したい。field設計をして。","expected_behavior":"本skillではなくcodex-exec-io-contractを使う。","notes":"跨skill混同: 実行面は既にexecで確定。"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"この小さな関数の名前を一つ提案して。","expected_behavior":"実行面選択を持ち出さず通常回答する。","notes":"無関係な小作業。"},
+    {"id":"edge-01","type":"edge_case","prompt":"今はterminalで試しているが、安定したら週次jobにしたい。","expected_behavior":"現在は対話型CLI、安定後はexecという段階的選択を示し、未安定なままscheduleしない。","notes":"時点により実行面が変わる境界。"}
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 positive + 2 bait + 1 edge。should_not_triggerは全件必須。"
+}
+
