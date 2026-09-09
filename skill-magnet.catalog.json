@@ -250,12 +250,11 @@
     {
       "id": "custom-skills",
       "display_name": "Custom skills",
-      "purpose": "Local registration UI verification fixture.",
+      "purpose": "CMA001のGmail・Web取得、ソース別抽出、重複排除、日本語執筆、品質検査を維持し、Google Sheetsへの出力だけを1ニュース1Markdownへ変更する。『CMA004』『CMA001をMarkdown出力』『AI NEWSをMarkdownへ保存』を依頼された時に使用する。動画・音声生成やSNS配信には使用しない。",
       "skills": [
         "cma-004",
         "obsidian-cli",
-        "codex-pmo-orchestration",
-        "explorer-fixture-valid"
+        "codex-pmo-orchestration"
       ],
       "skill_metadata": {
         "cma-004": {
@@ -269,10 +268,6 @@
         "codex-pmo-orchestration": {
           "display_name": "PMOの並列実行とリリース運用",
           "purpose": "複数プロジェクトを横断するPMOとして、実行・監査・ユーザー確認を小さなタスクへ分け、止まった担当を次の行動へ変換し、リリースを管理改善で止めないときに使う。PM看板、担当Codex、監査Codexの運用が対象。個別製品の実装そのものには使わない。"
-        },
-        "explorer-fixture-valid": {
-          "display_name": "explorer-fixture-valid",
-          "purpose": "Local registration UI verification fixture."
         }
       },
       "relations": {
