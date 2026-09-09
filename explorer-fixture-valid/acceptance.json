@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "assertions": [
+    {
+      "path": "result.applied",
+      "equals": true
+    }
+  ],
+  "generated_by": "Skill Magnet Library Manager"
+}
