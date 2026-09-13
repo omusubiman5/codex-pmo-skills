@@ -1,0 +1,3 @@
+interface:
+  display_name: "X引用リポスト"
+  short_description: "Grokの調査済み一覧から、再調査せず指定の引用リポストを実行"
